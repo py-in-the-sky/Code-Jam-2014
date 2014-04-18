@@ -44,6 +44,7 @@ def honest(Naomi, Ken):
         ## otherwise break out of the loop because all of Naomi's blocks are
         ## larger than Ken's (i.e., Ken can't earn any more points)
         i = next((k+i+1 for k,e in enumerate(Ken[i+1:]) if e>n), None)
+        ## TODO: since Ken is sorted, the above line could be sped up w/ binary search
         if i is not None:
             ken_score += 1
         else:
