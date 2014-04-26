@@ -26,24 +26,26 @@ def main(fin, fout=None):
 
 
 if __name__ == '__main__':
-    ## ADJUST PROBLEM INDEX
+    ## ADJUST PROBLEM INDEX AND MODE
     problem = 'A'  # 'A', 'B', 'C', or 'D'
+    mode = 'practice'  # 'practice', 'small', 'large'
 
-    ## TESTING ON PRACTICE INPUT
-    with open(problem+'-practice.in', 'r') as fin:
-        main(fin)
+    if mode is 'practice':
+        with open(problem+'-practice.in', 'r') as fin:
+            main(fin)
 
-    ## SMALL SUBMISSION
-    # with open(problem+'-small-attempt0.in', 'r') as fin:
-    #     with open(problem+'-small.out', 'w') as fout:
-    #         main(fin, fout)
+    elif mode is 'small':
+        with open(problem+'-small-attempt0.in', 'r') as fin:
+            with open(problem+'-small.out', 'w') as fout:
+                main(fin, fout)
 
-    ## LARGE SUBMISSION
-    # with open(problem+'-large.in', 'r') as fin:
-    #     with open(problem+'-large.out', 'w') as fout:
-    #         main(fin, fout)
+    elif mode is 'large':
+        with open(problem+'-large.in', 'r') as fin:
+            with open(problem+'-large.out', 'w') as fout:
+                main(fin, fout)
 
-    print 'done!'
+    print ('done!' if mode in ('practice', 'small', 'large')
+           else 'please choose a proper mode -- practice, small, or large')
 
 
 ##########  MEMOIZATION TEMPLATE   ##########
@@ -63,6 +65,7 @@ def memo(f):
     return _f
 
 ##########  BFS TEMPLATE   ##########
+# TODO: create template based on code from Design of Computer Programs
 """
 See code from Design of Computer Programs
 keys to BFS:
@@ -78,3 +81,11 @@ keys to BFS:
 BFS using caching to prevent duplicating paths in a search; memoization uses caching to
 prevent duplicating calculations in a tree aggregation
 """
+
+
+##########  DFS TEMPLATE   ##########
+# TODO: create similar template, using a stack instead of a priority queue
+
+
+##########  BISECT TEMPLATE   ##########
+# TODO: set up wrapper around bisect.bisect
