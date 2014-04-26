@@ -28,7 +28,12 @@ def solve(N, L, start, goal):
     NB: treat goal and start as sets of currents -- that is, order doesn't
     matter in comparing start to goal and all currents in start/goal
     are mutually unique"""
-    # BFS w/ priority queue; queue orders by min bits flipped
+    # BFS w/ priority queue; queue orders by min bits flipped;
+    # we don't use an 'explored' set because we may need to revisit the same
+    # configuration of currents several times as index i increments;
+    # instead, to constrain the search space, we use the is_consistent filter
+    # before placing a state in the queue to check that the configuration of
+    # currents is consistent with goal at least up to bit i
     start_state = (0, start, 0)  # ( n_bits_flipped, state_of_currents, index )
     queue = PriorityQueue()
     queue.put( start_state )
