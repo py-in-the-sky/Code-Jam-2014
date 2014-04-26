@@ -32,8 +32,9 @@ def solve(N, L, start, goal):
     # we don't use an 'explored' set because we may need to revisit the same
     # configuration of currents several times as index i increments;
     # instead, to constrain the search space, we use the is_consistent filter
-    # before placing a state in the queue to check that the configuration of
-    # currents is consistent with goal at least up to bit i
+    # before placing a state in the queue in order to check that the
+    # configuration of currents in that state is consistent with goal at least
+    # up to bit i-1
     start_state = (0, start, 0)  # ( n_bits_flipped, state_of_currents, index )
     queue = PriorityQueue()
     queue.put( start_state )
