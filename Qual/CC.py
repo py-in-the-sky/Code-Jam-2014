@@ -3,9 +3,11 @@ def is_goal(state):
     have at least one zero neighbor, and all zeros form a contiguous group"""
     pass
 
+
 def successors(state):
     "return successor states with constraints propagated"
     pass
+
 
 def solve(R, C, M):
     "return 'Impossible' or '\n'.join(rows)"
@@ -25,6 +27,7 @@ def solve(R, C, M):
         stack = [ start_state ]
         while stack:
             s = stack.pop()
+
 
 def main(fin, fout=None):
     """steps:

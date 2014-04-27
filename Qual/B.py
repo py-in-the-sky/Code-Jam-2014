@@ -1,8 +1,10 @@
 from Queue import PriorityQueue
 
+
 def is_goal(state):
     seconds, cookies, rate, C, F, X = state
     return cookies == X
+
 
 def successors(state):
     ## two successors:
@@ -12,6 +14,7 @@ def successors(state):
     successor1 = (seconds+(C/rate), 0, rate+F, C, F, X)
     successor2 = (seconds+(X/rate), X, rate, C, F, X)
     return (successor1, successor2)
+
 
 def solve(C, F, X):
     ## BFS w/ priority queue where cost is seconds and choice is go for X or go for a farm

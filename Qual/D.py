@@ -8,6 +8,7 @@ See the functions deceitful and honest for Naomi's strategies
 """
 # from itertools import takewhile
 
+
 def deceitful(Naomi, Ken):
     ## Naomi knows the masses of Ken's blocks
     ## strategy: Naomi sacrifices her smallest blocks against Ken's largest blocks
@@ -32,6 +33,7 @@ def deceitful(Naomi, Ken):
 
     return naomi_score
 
+
 def honest(Naomi, Ken):
     ## strategy: just announce honestly
     ken_score = 0  # Ken's points
@@ -51,12 +53,14 @@ def honest(Naomi, Ken):
             break
     return len(Naomi) - ken_score
 
+
 def solve(Naomi, Ken):
     Naomi = sorted(Naomi)  # smallest to largest
     Ken = sorted(Ken)
     z = honest(Naomi, Ken)
     y = deceitful(Naomi, Ken)  # deceitful mutates lists, so it comes after honest
     return (y, z)
+
 
 def main(fin, fout=None):
     """steps:

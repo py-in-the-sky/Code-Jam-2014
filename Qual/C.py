@@ -6,10 +6,12 @@ def transform(board, click, R, C):
     new_board = new_board[:first_zero] + click + new_board[first_zero+1:]
     return ''.join('.' if e=='0' else e for e in new_board)
 
+
 def satisfies(state):
     "return True if meets all constraints; otherwise False"
     board, mines, rows_left = state
     return mines >= 0 and rows_left >= 0
+
 
 def contiguous_zeros(board):
     ## BFS to ensure all zeros are contiguous
@@ -18,12 +20,15 @@ def contiguous_zeros(board):
     ## return whether these counts are equal
     pass
 
+
 def is_goal(state):
     ## any board passed here will already meet all constraints
     board, mines, rows_left = state
     return mines == rows_left == 0 and contiguous_zeros(board)
 
+
 def get_last_row(board, C): return board[-C:] if board else None
+
 
 def place_zeros(row_above):
     ## place zeros as neighbors to numbers but not to mines
@@ -53,6 +58,7 @@ def place_zeros(row_above):
 
     return ''.join(ZERO if e in SOME_NUMBER else OPEN for e in row_above)
 
+
 def successors(state):
     "return all possible successor states that satisfy constraints"
     def count_mines(row): return sum(e=='*' for e in row)
@@ -65,6 +71,7 @@ def successors(state):
         return ( (board+r, mines-count_mines(r), rows_left-1) for r in new_rows )
     else:  # no rows arranged yet
         pass
+
 
 def search(R, C, M):
     """use constraint propagation to find and return a board
@@ -93,6 +100,7 @@ def search(R, C, M):
             if satisfies(s):
                 stack.append(s)
 
+
 def solve(R, C, M):
     "return 'Impossible' or '\n'.join(rows)"
     ## a board can be solved iff:
@@ -108,6 +116,7 @@ def solve(R, C, M):
     else:
         result = search(R, C, M)
         return transform(result, CLICK, R, C) if result else 'Impossible'
+
 
 def main(fin, fout=None):
     """steps:
