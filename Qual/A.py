@@ -9,6 +9,7 @@ def solve(answer_a, answer_b, board_a, board_b):
     else:
         return intersection.pop()
 
+
 def main(fin, fout):
     """steps:
     1) read data from fin
